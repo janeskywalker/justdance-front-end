@@ -11,6 +11,7 @@ function App({ user }) {
           Just Dance
         </h1>
 
+
         <h2>Hello {user.name}</h2>
 
       </header>
