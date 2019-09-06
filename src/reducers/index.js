@@ -5,9 +5,10 @@ const initialState = {
         email: 'test@test.com',
         avatar: 'avatar.jpg',
     },
+    currentStudio: null,
     studios: [],
     reviews: [],
-    currentStudio: null,
+    
 }
 
 const reducer = (state = initialState, action) => {
