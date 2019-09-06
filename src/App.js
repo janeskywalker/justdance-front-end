@@ -4,6 +4,10 @@ import { connect } from 'react-redux'
 import NavBar from './components/NavBar';
 import { Switch, Route, withRouter } from 'react-router-dom'
 import ProfileContainer from './components/Profile/ProfileContainer';
+import StudioContainer from './components/Studio/StudioContainer';
+import Router from './config/routes';
+import Home from './Home'
+
 
 
 function App({ user }) {
@@ -12,18 +16,7 @@ function App({ user }) {
 
       <NavBar />
 
-      <header className="App-header">
-        <h1>Just Dance</h1>
-        <p>An app for dancers</p>
-        {/* <h2>Hello {user.name}</h2> */}
-      </header>
-
-      <Switch>
-            {/* creating routes */}
-            <Route exact path="/profile" component={ProfileContainer} />
-      </Switch>
-
-
+      <Router />
 
     </div>
   );
