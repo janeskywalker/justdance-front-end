@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux'
 
 
-function ProfileContainer({ state }) {
+const ProfileContainer = () => {
   return (
     <div className="App">
       <h2>I am ProfileContainer</h2>

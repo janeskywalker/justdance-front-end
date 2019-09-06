@@ -2,6 +2,9 @@ import React from 'react';
 import './App.css';
 import { connect } from 'react-redux'
 import NavBar from './components/NavBar';
+import { Switch, Route, withRouter } from 'react-router-dom'
+import ProfileContainer from './components/Profile/ProfileContainer';
+
 
 function App({ user }) {
   return (
@@ -15,8 +18,13 @@ function App({ user }) {
         {/* <h2>Hello {user.name}</h2> */}
       </header>
 
+      <Switch>
+            {/* creating routes */}
+            <Route exact path="/profile" component={ProfileContainer} />
+      </Switch>
 
-      
+
+
     </div>
   );
 }
