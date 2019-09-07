@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
+import { createReview} from '../../actions/reviewActions'
 
 
 
@@ -9,10 +10,6 @@ class StudioDetail extends Component {
         showForm: false
     }
 
-    toogleForm() {
-        this.showForm = !this.showForm
-        console.log(this.showForm)
-    }
 
   render() {
         console.log(this.props)
@@ -22,16 +19,14 @@ class StudioDetail extends Component {
    
         const studios = this.props.studios
         const studioId = parseInt(this.props.match.params.id)
-
         const currentStudio = studios.filter(studio=> studio.id === studioId)
-
         const { name, image, address: {street, city, zip} } = currentStudio[0]
 
       return (
         <div className="studio-detail" >
 
         <section>
-            <h2>You are at {name} </h2>
+            <h2>{name} </h2>
             <img className="studio-image-detail" src={`/${image}`} alt="studio gallery" />
             <p>{street}</p>
             <p>{city}</p>
@@ -57,8 +52,6 @@ class StudioDetail extends Component {
             </div>
 
         </form>
-
-
         </div>
       )
   }
@@ -71,6 +64,6 @@ function mapStateToProps(state) {
     return { studios: state.studios, currentUser: state.currentUser }
   }
   
-export default connect(mapStateToProps)(StudioDetail);
+export default connect(mapStateToProps, { createReview })(StudioDetail);
   
   

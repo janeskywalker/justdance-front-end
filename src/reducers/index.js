@@ -1,6 +1,4 @@
 
-import uuid from 'uuid';
-
 const initialState = {
     currentUser: {
         id: 1,
