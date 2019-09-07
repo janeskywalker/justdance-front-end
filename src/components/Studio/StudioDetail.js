@@ -5,15 +5,17 @@ import { connect } from 'react-redux'
 
 class StudioDetail extends Component {
 
-
     state = {
         showForm: false
     }
 
+    toogleForm() {
+        this.showForm = !this.showForm
+        console.log(this.showForm)
+    }
 
   render() {
         console.log(this.props)
-
 
     // grab the id from match
     // parseInt neeeds to be removed when going to mongo Id's
@@ -24,8 +26,7 @@ class StudioDetail extends Component {
         const currentStudio = studios.filter(studio=> studio.id === studioId)
 
         const { name, image, address: {street, city, zip} } = currentStudio[0]
-        console.log(image)
-    
+
       return (
         <div className="studio-detail" >
 
@@ -37,6 +38,27 @@ class StudioDetail extends Component {
             <p>{zip}</p>
         </section>
 
+        <button>Add Review</button>
+
+        <form className="form" onSubmit={(evt)=>{
+            evt.preventDefault()
+            console.log('creaing review')}}  >
+
+            <h3 className="text-center">New Review</h3>
+
+            <div className="input-group">
+                <label htmlFor="content"></label>
+                <textarea className="form-content" name="content" id="content" type="content" placeholder="Please write your review here..."></textarea>
+            </div>
+
+            <div className="form-footer">
+                <button className="form-btn" type="submit">Submit</button>
+                <button className="form-btn" type="button" onClick={console.log('cancel')}>Cancel</button>
+            </div>
+
+        </form>
+
+
         </div>
       )
   }
@@ -46,7 +68,7 @@ class StudioDetail extends Component {
 
 
 function mapStateToProps(state) {
-    return { studios: state.studios }
+    return { studios: state.studios, currentUser: state.currentUser }
   }
   
 export default connect(mapStateToProps)(StudioDetail);
