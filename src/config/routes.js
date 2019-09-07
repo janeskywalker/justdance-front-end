@@ -3,6 +3,7 @@ import { Switch, Route, withRouter } from 'react-router-dom'
 import Home from '../Home'
 import ProfileContainer from '../components/Profile/ProfileContainer';
 import StudioContainer from '../components/Studio/StudioContainer';
+import StudioDetail from '../components/Studio/StudioDetail';
 
 // destructuring 
 const Router = () => {
@@ -14,6 +15,7 @@ const Router = () => {
         <Route exact path="/" component={Home} />
         <Route exact path="/profile" component={ProfileContainer} />
         <Route exact path="/studios" component={StudioContainer} />
+        <Route exact path="/studio/:id" component={StudioDetail} />
 
 
       </Switch>
