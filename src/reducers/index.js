@@ -1,3 +1,4 @@
+import { CREATE_REVIEW } from "../actions/actionTypes";
 
 const initialState = {
     currentUser: {
@@ -12,6 +13,7 @@ const initialState = {
             id: 1,
             name: 'Phoenix Aerial Art & Pole',
             image: 'assets/phoenix.png',
+            reviews: [],
             address: {
                 street: "1636 University Ave",
                 city: "Berkeley",
@@ -23,6 +25,7 @@ const initialState = {
             id: 2,
             name: 'Inspiration Studios',
             image: 'assets/pole.png',
+            reviews: [],
             address: {
                 street: "2682 Middlefield Rd",
                 city: "Redwood City",
@@ -34,6 +37,7 @@ const initialState = {
             id: 3,
             name: 'Crunch Fitness',
             image: 'assets/pole2.png',
+            reviews: [],
             address: {
                 street: "61 New Montgomery St",
                 city: "San Francisco",
@@ -45,6 +49,7 @@ const initialState = {
             id: 4,
             name: "Gypsy Love Belly Dancing",
             image: 'assets/belly.png',
+            reviews: [],
             address: {
                 street: "1731 Buchanan St",
                 city: "Janpan Town",
@@ -57,6 +62,7 @@ const initialState = {
             id: 5,
             name: "Albeto's Salsa & Bachata",
             image: 'assets/albeto.png',
+            reviews: [],
             address: {
                 street: "736 West Dance St",
                 city: "Mountain View",
@@ -69,6 +75,7 @@ const initialState = {
             id: 6,
             name: "Allegro Salsa Dancing",
             image: 'assets/salsa.png',
+            reviews: [],
             address: {
                 street: "4 Embarcadero Ctr",
                 city: "San Francisco",
@@ -77,12 +84,32 @@ const initialState = {
         },
 
     ],
-    reviews: [],
+    
     
 }
 
 const reducer = (state = initialState, action) => {
-    return state
+    console.log('action: ', action)
+    switch(action.type) {
+        case CREATE_REVIEW:
+            // const newReview = 
+            return Object.assign({}, state, {
+                studios: state.studios.map((studio) => {
+                    if (studio.id === action.newReview.studioId) {
+                        return Object.assign({}, studio, {
+                            reviews: [ ...studio.reviews, action.newReview ]
+                        })
+                    } else {
+                        return studio
+                    }
+                })
+            })
+
+            default: 
+                return state
+    }
+
+
 }
 
 export default reducer
