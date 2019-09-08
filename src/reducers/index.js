@@ -103,8 +103,19 @@ const reducer = (state = initialState, action) => {
                     }
                 })
             })
-            case DELETE_REVIEW:
-                    
+        case DELETE_REVIEW:
+            return Object.assign({}, state, {
+                studios: state.studios.map((studio) => {
+                    if (studio.id === action.data.studioId) {
+                        console.log(action.data.studioId)
+                        return Object.assign({}, studio, {
+                            reviews: studio.reviews.filter(review=>review.id !== action.data.reviewId)
+                        })
+                    } else {
+                        return studio
+                    }
+                })
+            })
  
 
             default: 

@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { createReview, deleteReview } from '../../actions/reviewActions'
+import ReviewForm from './ReviewForm';
 
 
 
 class StudioDetail extends Component {
 
     state = {
-        newReview: " "
+        newReview: "",
+        showForm: false,
     }
 
     handleChange = (evt) => {
@@ -16,7 +18,7 @@ class StudioDetail extends Component {
     }
 
   render() {
-        console.log(this.props)
+        console.log('props: ', this.props)
 
     // grab the id from match
     // parseInt neeeds to be removed when going to mongo Id's
@@ -41,6 +43,36 @@ class StudioDetail extends Component {
         </section>
 
         <section className="review-display">
+
+            {this.state.showForm ?
+                <ReviewForm
+                    onSubmit={(evt)=>{
+                        evt.preventDefault()
+                        const newReview = {
+                            userId: this.props.currentUser.id,
+                            studioId: studioId,
+                            review: this.state.newReview.trim(),
+                        }
+                        this.props.createReview(newReview)
+                        this.setState({ newReview: '' })
+                    }}
+                    onCancel={() => {
+                        this.setState({
+                            newReview: '',
+                            showForm: false
+                        })
+                    }}
+                    onChange={this.handleChange}
+                    value={this.state.newReview}
+                />
+            : <button onClick={() => {
+                if (this.state.showForm) {
+                    this.setState({ showForm: false })
+                } else {
+                    this.setState({ showForm: true })
+                }
+            }}>Add Review</button>}
+
             <ul>
                 {currentStudio.reviews.map((review)=>{
                     return <li key={review.id}>{review.review}<button onClick={(evt)=>{
@@ -54,28 +86,6 @@ class StudioDetail extends Component {
             </ul>
         </section>
 
-        <form className="create-reivew-form" onSubmit={(evt)=>{
-            evt.preventDefault()
-            const newReview = {
-                userId: this.props.currentUser.id,
-                studioId: studioId,
-                review: this.state.newReview.trim(),
-            }
-            this.props.createReview(newReview)}}  >
-
-            <h3 className="text-center">New Review</h3>
-
-            <div className="input-group">
-                <label htmlFor="content"></label>
-                <textarea className="form-content" name="content" id="content" type="content" placeholder="Please write your review here..." onInput={this.handleChange}></textarea>
-            </div>
-
-            <div className="form-footer">
-                <button className="form-btn" type="submit">Submit</button>
-                <button className="form-btn" type="button" onClick={()=>{console.log('cancel')}}>Cancel</button>
-            </div>
-
-        </form>
         </div>
       )
   }
