@@ -40,7 +40,13 @@ class StudioDetail extends Component {
             <p>{zip}</p>
         </section>
 
-        <button>Add Review</button>
+        <section className="review-display">
+            <ul>
+                {currentStudio.reviews.map((review)=>{
+                    return <li key={review.id}>{review.review}</li>
+                })}
+            </ul>
+        </section>
 
         <form className="create-reivew-form" onSubmit={(evt)=>{
             evt.preventDefault()
