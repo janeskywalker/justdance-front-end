@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import { createReview} from '../../actions/reviewActions'
+import { createReview, deleteReview } from '../../actions/reviewActions'
 
 
 
@@ -43,7 +43,13 @@ class StudioDetail extends Component {
         <section className="review-display">
             <ul>
                 {currentStudio.reviews.map((review)=>{
-                    return <li key={review.id}>{review.review}</li>
+                    return <li key={review.id}>{review.review}<button onClick={(evt)=>{
+                        console.log('delete')
+                        this.props.deleteReview({
+                            studioId: studioId,
+                            reviewId: review.id
+                        })
+                    }}>x</button></li>
                 })}
             </ul>
         </section>
@@ -66,7 +72,7 @@ class StudioDetail extends Component {
 
             <div className="form-footer">
                 <button className="form-btn" type="submit">Submit</button>
-                <button className="form-btn" type="button" onClick={console.log('cancel')}>Cancel</button>
+                <button className="form-btn" type="button" onClick={()=>{console.log('cancel')}}>Cancel</button>
             </div>
 
         </form>
@@ -86,7 +92,7 @@ function mapStateToProps(state) {
 // connect takes your action creator (createReview) and makes a new function
 // That takes the action object returned from your function and gives it to your
 // store's dispatch method (store.dispatch).
-export default connect(mapStateToProps, { createReview })(StudioDetail);
+export default connect(mapStateToProps, { createReview, deleteReview })(StudioDetail);
   
   
 // Redux

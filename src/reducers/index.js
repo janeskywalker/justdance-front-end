@@ -1,4 +1,4 @@
-import { CREATE_REVIEW } from "../actions/actionTypes";
+import { CREATE_REVIEW, DELETE_REVIEW } from "../actions/actionTypes";
 
 const initialState = {
     currentUser: {
@@ -92,7 +92,6 @@ const reducer = (state = initialState, action) => {
     console.log('action: ', action)
     switch(action.type) {
         case CREATE_REVIEW:
-            // const newReview = 
             return Object.assign({}, state, {
                 studios: state.studios.map((studio) => {
                     if (studio.id === action.newReview.studioId) {
@@ -104,6 +103,9 @@ const reducer = (state = initialState, action) => {
                     }
                 })
             })
+            case DELETE_REVIEW:
+                    
+ 
 
             default: 
                 return state

@@ -8,3 +8,11 @@ export function createReview(newReview) {
         newReview: Object.assign({}, newReview, {id: uuid()})
     }
 }
+
+export function deleteReview(data) {
+    console.log('deleteing -- action ')
+    return {
+        type: DELETE_REVIEW,
+        data: data
+    }
+}
