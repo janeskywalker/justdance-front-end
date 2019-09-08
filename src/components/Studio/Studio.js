@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom'
 
 
 const Studio = ({studio:{name, image, id}}) => {
-    console.log(name)
   return (
     <li className="studio" >
         <Link to={`/studio/${id}`}>

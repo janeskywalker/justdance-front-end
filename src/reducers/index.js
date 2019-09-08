@@ -1,12 +1,13 @@
-import { CREATE_REVIEW, DELETE_REVIEW } from "../actions/actionTypes";
+import { LOG_OUT, CREATE_REVIEW, DELETE_REVIEW } from "../actions/actionTypes";
 
 const initialState = {
-    currentUser: {
-        id: 1,
-        name: 'Jane',
-        email: 'test@test.com',
-        avatar: 'avatar.jpg',
-    },
+    // currentUser: {
+    //     id: 1,
+    //     name: 'Jane',
+    //     email: 'test@test.com',
+    //     avatar: "/assets/avatar.JPG",
+    // },
+    currentUser: null,
     currentStudio: null,
     studios: [
         {
@@ -90,7 +91,13 @@ const initialState = {
 
 const reducer = (state = initialState, action) => {
     console.log('action: ', action)
+    
     switch(action.type) {
+        case LOG_OUT:
+            return Object.assign({}, state, {
+                currentUser: null
+            })
+
         case CREATE_REVIEW:
             return Object.assign({}, state, {
                 studios: state.studios.map((studio) => {
@@ -103,6 +110,7 @@ const reducer = (state = initialState, action) => {
                     }
                 })
             })
+
         case DELETE_REVIEW:
             return Object.assign({}, state, {
                 studios: state.studios.map((studio) => {

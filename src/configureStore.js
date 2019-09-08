@@ -3,7 +3,6 @@ import reducer from './reducers';
 
 
 const configureStore = () => {
-  console.log('config')
   const store = createStore(
     // create store, pass to reducer
     reducer,
