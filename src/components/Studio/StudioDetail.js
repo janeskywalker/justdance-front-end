@@ -101,7 +101,7 @@ function mapStateToProps(state) {
   
 // connect takes your action creator (createReview) and makes a new function
 // That takes the action object returned from your function and gives it to your
-// store's dispatch method (store.dispatch).
+// store's dispatch method (store.dispatch), which will call reducer
 export default connect(mapStateToProps, { createReview, deleteReview })(StudioDetail);
   
   
@@ -112,4 +112,3 @@ export default connect(mapStateToProps, { createReview, deleteReview })(StudioDe
 // 4. Call dispatch with an action
 // 5. Dispatch will call your reducer with action
 // 6. When new object is returned from reducer redux will rerender
-//    your react views
