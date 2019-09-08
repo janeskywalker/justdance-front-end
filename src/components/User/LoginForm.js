@@ -9,33 +9,51 @@ class LoginForm extends Component {
     state = {
         email: "",
         password: "",
+        error: null
     }
 
     handleChange = (event) => {
         this.setState({
           [event.target.name]: event.target.value,
         });
+        console.log(this.state)
       };
+
+    handleSubmit = (evt)=>{
+        evt.preventDefault()
+        const currentUser = {
+            email: this.state.email,
+            password: this.state.password
+        }
+        this.props.login(currentUser)
+    }
      
 
   render() {
 
         return (
 
-              <form onSubmit={this.handleSubmit}>
+            <section className='login-form-page'>
 
-                <div className="form-group">
-                  <label htmlFor="email">Email</label>
-                  <input type="email" id="email" name="email" value={this.state.email} onChange={this.handleChange} className="form-input" placeholder="example@example.com"/>
-                </div>
+                <h2 className="form-greeting">Welcome to Login</h2>
 
-                <div className="form-group">
-                  <label htmlFor="email">Password</label>
-                  <input type="password" id="password" name="password" value={this.state.password} onChange={this.handleChange} className="form-input" />
-                </div>
+            {/* this handleSubmit is not passed down by parent anymore */}
+                <form onSubmit={this.handleSubmit} className='login-form'>
 
-                <button type="submit" className="login-btn">Login</button>
-              </form>
+                    <div className="form-group">
+                    <label htmlFor="email">Email</label>
+                    <input type="email" id="email" name="email" value={this.state.email} onChange={this.handleChange} className="form-input" />
+                    </div>
+
+                    <div className="form-group">
+                    <label htmlFor="email">Password</label>
+                    <input type="password" id="password" name="password" value={this.state.password} onChange={this.handleChange} className="form-input" />
+                    </div>
+
+                    <button type="submit" className="login-btn">Submit</button>
+                </form>
+
+            </section>
 
       )
   }

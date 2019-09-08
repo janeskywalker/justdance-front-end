@@ -1,17 +1,14 @@
-import { SIGN_UP, LOG_IN, LOG_OUT } from './actionTypes';
+import { LOG_IN, LOG_OUT } from './actionTypes';
 
 
-
-export function login () {
+export function login (currentUser) {
   console.log('login action')
-  // return {
-  //   type: SIGN_UP,
-  //   data: {
-  //     id: uuid(),
-  //     completed: false,
-  //     task,
-  //   }
-  // }
+  return {
+    type: LOG_IN,
+    data: {
+      currentUser: currentUser
+    }
+  }
 }
 
 

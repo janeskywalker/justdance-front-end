@@ -20,9 +20,9 @@ class StudioDetail extends Component {
   render() {
         console.log('props: ', this.props)
 
-    // grab the id from match
-    // parseInt neeeds to be removed when going to mongo Id's
-   
+        // grab the id from match
+        // parseInt neeeds to be removed when going to mongo Id's
+    
         const studios = this.props.studios
         const studioId = parseInt(this.props.match.params.id)
         const currentStudio = studios.filter(studio=> studio.id === studioId)[0]
@@ -34,7 +34,7 @@ class StudioDetail extends Component {
       return (
         <div className="studio-detail" >
 
-        <section>
+        <section className="studio-info">
             <h2>{name} </h2>
             <img className="studio-image-detail" src={`/${image}`} alt="studio gallery" />
             <p>{street}</p>

@@ -40,7 +40,7 @@ const NavBar = ({currentUser, logout}) => {
         return (
             <nav>
                 <Link to="/" className="brand-link">
-                    <h1 className="brand-header">justDance</h1>
+                    <h1 className="brand-header">Just Dance</h1>
                 </Link>
 
                 <button 
