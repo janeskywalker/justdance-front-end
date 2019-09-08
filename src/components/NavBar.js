@@ -48,10 +48,10 @@ const NavBar = ({currentUser, logout}) => {
                 style={{cursor: 'pointer'}} 
                 onClick={()=>{console.log('clicked signup')}}>Signup</button>
 
-                <button 
-                className="nav-btn" 
-                style={{cursor: 'pointer'}} 
-                onClick={()=>{console.log('clicked login')}}>Login</button>
+
+                <Link to="/loginform" className="brand-link">
+                    <p className="navbar-link">Login</p>
+                </Link>
 
             </nav>
         )
