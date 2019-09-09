@@ -2,14 +2,16 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: sans-serif;
 }
 
 .App {
   text-align: center;
-}
+  background-color: black;
+} 
 
 .App-header {
-  background-color: #282c34;
+  background-color: black;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -17,59 +19,81 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
-}
+} 
 
-.App-link {
-  color: #61dafb;
-}
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
 
-.studio-wrapper {
-  background-color: #282c34;
-  color: white;
+
+/* ----------------------navbar----------------- */
+
+.nav-bar {
+  background-color: rgb(235, 8, 8);
   display: grid;
   grid-template-columns: 1fr 1fr;
+  padding: 1em 0.8em;
 
 }
 
-.studio-image {
-  height: 200px;
+.nav-list {
+  list-style: none;
+  display: block;
+  padding: 2em;
+  display: inline-block;
 }
 
-.studio-image-detail {
-  height: 400px;
+.nav-list-item {
+  display: block;
+  float: right;
+  padding: 0 0 0 2em;
 }
 
-.form-content{
-  height: 10vh;
-  width: 60%;
+
+.nav-list-item .nav-link, .brand-link{
+  color: whitesmoke;
+  text-decoration: none;
+}
+
+
+.nav-btn {
+  background-color:rgb(235, 8, 8);
+  color: whitesmoke;
+  border: none
+}
+
+.submit-btn {
+  background-color: black;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+
+/* ----------------------Profile page----------------- */
+
+.greet-user{
+  color: whitesmoke;
 }
 
 .avatar {
-  height: 100vh;
+  height: 70vh;
 }
 
-nav {
-  background-color: rgb(235, 8, 8);
-}
+
+/* ------------------------forms------------------------ */
+
 
 .login-form-page {
-  background-color: #282c34;
+  background-color: black;
   color: white;
   height:100vh;
 }
 
-.login-form {
-  
-}
 
 .form-greeting {
   padding: 2em;
@@ -79,13 +103,85 @@ nav {
   margin: 2em;
 }
 
+
+
+.form-content{
+  height: 10vh;
+  width: 60%;
+}
+
+
+
+
+
+/* ----------------------studioContainer----------------- */
+
+
+.studio-wrapper {
+  background-color: black;
+  color: white;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
+}
+
+
+.studio {
+  list-style: none;
+}
+
+
+.studio .studio-link {
+  color: whitesmoke;
+  text-decoration: none;
+}
+
+.studio-image {
+  height: 250px;
+}
+
+
+
+
+
+
+/* ----------------------studioDetail----------------- */
+.studio-image-detail {
+  height: 400px;
+}
+
+
 .studio-info {
-  background-color: #282c34;
+  background-color: black;
   color: whitesmoke;
   padding: 5em;
 }
 
 .review-display {
-  background-color: #282c34;
+  background: rgb(7, 0, 0);
   color: whitesmoke;
 }
+
+.review-list {
+  margin: 2em;
+
+}
+
+
+.review-list-item {
+  margin: 2em auto;
+  width: 65%;
+  height: 10vh;
+  list-style: none;
+  border: whitesmoke solid 1px;
+
+}
+
+/* ----------------------footer----------------- */
+
+
+.page-footer {
+  padding: 1em;
+  background-color:rgb(235, 8, 8);
+}
+

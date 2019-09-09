@@ -16,6 +16,8 @@ function App({ user }) {
 
       <Router />
 
+      <footer className="page-footer" >&copy;2019  Jane Zeng </footer> 
+
     </div>
   );
 }

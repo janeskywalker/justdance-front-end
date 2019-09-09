@@ -10,49 +10,43 @@ const NavBar = ({currentUser, logout}) => {
     // if logged in, show homepage link, link to profile and logout button 
     if(currentUser) {
         return (
-            <nav>
-                <Link to="/" className="brand-link">
-                    <h1 className="brand-header">Just Dance</h1>
-                </Link>
+            <nav className='nav-bar'>
+                
+                <Link to="/" className="brand-link"><h1 className="brand-header">Just Dance</h1></Link>
 
-                <Link to="/profile" className="nav-btn" >
-                    Profile
-                </Link>
+                <ul className="nav-list">
+                    <li className="nav-list-item"><Link to="/profile" className="nav-link" >Profile</Link></li>
+                    <li className="nav-list-item"><Link to="/studios" className="nav-link" >Studios</Link></li>
+                
+                    {/* logout button -> set currentUser to null, redirect to Home page*/}
+                    <button className="nav-list-item nav-btn" 
+                    style={{cursor: 'pointer'}} 
+                    onClick={()=>{
+                        console.log('clicked logout')
+                        logout()
+                        }}>Logout</button>
 
-                <Link to="/studios" className="nav-btn" >
-                    Studios
-                </Link>
-
-                {/* logout button -> set currentUser to null, redirect to Home page*/}
-                <button 
-                className="nav-btn" 
-                style={{cursor: 'pointer'}} 
-                onClick={()=>{
-                    console.log('clicked logout')
-                    logout()
-                    }}>Logout</button>
-
+                </ul>
             </nav>
         )
-
     } else {
         // if not logged in, show hompage link, signup and login button
         return (
-            <nav>
-                <Link to="/" className="brand-link">
-                    <h1 className="brand-header">Just Dance</h1>
-                </Link>
-
-                <button 
-                className="nav-btn" 
-                style={{cursor: 'pointer'}} 
-                onClick={()=>{console.log('clicked signup')}}>Signup</button>
+            <nav className='nav-bar'>
 
 
-                <Link to="/loginform" className="brand-link">
-                    <p className="navbar-link">Login</p>
-                </Link>
+                <Link to="/" className="brand-link"><h1 className="brand-header">Just Dance</h1></Link>
 
+                <ul className="nav-list">
+                    <li className="nav-list-item"><button 
+                        className="nav-btn" 
+                        style={{cursor: 'pointer'}} 
+                        onClick={()=>{console.log('clicked signup')}}>Signup</button>
+                    </li>
+
+                    <li className="nav-list-item"><Link to="/loginform" className="brand-link">Login</Link></li>
+                    
+                </ul>
             </nav>
         )
     }

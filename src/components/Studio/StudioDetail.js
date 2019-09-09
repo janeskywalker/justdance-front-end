@@ -42,9 +42,12 @@ class StudioDetail extends Component {
             <p>{zip}</p>
         </section>
 
+
         <section className="review-display">
 
-            {this.state.showForm ?
+            {this.props.currentUser !== null ? 
+
+            this.state.showForm && this.props.currentUser !== null?
                 <ReviewForm
                     onSubmit={(evt)=>{
                         evt.preventDefault()
@@ -71,11 +74,14 @@ class StudioDetail extends Component {
                 } else {
                     this.setState({ showForm: true })
                 }
-            }}>Add Review</button>}
+            }}>Add Review</button>
+            : undefined
+        }
 
-            <ul>
+
+            <ul className='review-list'>
                 {currentStudio.reviews.map((review)=>{
-                    return <li key={review.id}>{review.review}<button onClick={(evt)=>{
+                    return <li className='review-list-item'key={review.id}>{review.review}<button onClick={(evt)=>{
                         console.log('delete')
                         this.props.deleteReview({
                             studioId: studioId,
@@ -84,6 +90,7 @@ class StudioDetail extends Component {
                     }}>x</button></li>
                 })}
             </ul>
+
         </section>
 
         </div>

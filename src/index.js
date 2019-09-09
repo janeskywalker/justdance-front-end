@@ -27,3 +27,7 @@ ReactDOM.render(
 //     review: 'This is another good review',
 //   }))
 // }, 1000)
+
+// fetch('http://localhost:4000/api/v1/studios').then((res) => {
+//   store.dispatch(res.body())
+// })

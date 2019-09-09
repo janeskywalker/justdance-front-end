@@ -21,10 +21,12 @@ class LoginForm extends Component {
 
     handleSubmit = (evt)=>{
         evt.preventDefault()
+        
         const currentUser = {
             email: this.state.email,
             password: this.state.password
         }
+
         this.props.login(currentUser)
     }
      
@@ -50,7 +52,7 @@ class LoginForm extends Component {
                     <input type="password" id="password" name="password" value={this.state.password} onChange={this.handleChange} className="form-input" />
                     </div>
 
-                    <button type="submit" className="login-btn">Submit</button>
+                    <button type="submit" className="submit-btn">Submit</button>
                 </form>
 
             </section>
