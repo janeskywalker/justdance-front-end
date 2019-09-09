@@ -8,6 +8,6 @@ export const LOG_OUT = 'LOG_OUT'
 
 
 
-// review actions
-export const CREATE_REVIEW = 'CREATE_REVIEW';
-export const DELETE_REVIEW = 'DELETE_REVIEW';
+// message actions
+export const CREATE_MESSAGE = 'CREATE_MESSAGE';
+export const DELETE_MESSAGE = 'DELETE_MESSAGE';

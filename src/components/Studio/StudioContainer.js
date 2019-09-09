@@ -6,7 +6,7 @@ const StudioContainer = ({ studios }) => {
   console.log(studios)
 
   const showStudios = studios.map(studio=> {
-    return <Studio studio={studio} key={studio.id}/>
+    return <Studio studio={studio} key={studio._id}/>
   })
   
   return (

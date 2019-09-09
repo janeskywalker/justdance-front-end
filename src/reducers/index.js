@@ -1,4 +1,4 @@
-import {  LOG_IN, LOG_OUT, CREATE_REVIEW, DELETE_REVIEW } from "../actions/actionTypes";
+import {  LOG_IN, LOG_OUT, CREATE_MESSAGE, DELETE_MESSAGE } from "../actions/actionTypes";
 
 const initialState = {
     currentUser: null,
@@ -22,12 +22,12 @@ const reducer = (state = initialState, action) => {
                 currentUser: null
             })
 
-        case CREATE_REVIEW:
+        case CREATE_MESSAGE:
             return Object.assign({}, state, {
                 studios: state.studios.map((studio) => {
-                    if (studio.id === action.newReview.studioId) {
+                    if (studio._id === action.newMessage.studioId) {
                         return Object.assign({}, studio, {
-                            reviews: [ ...studio.reviews, action.newReview ]
+                            messages: [ ...studio.messages, action.newMessage ]
                         })
                     } else {
                         return studio
@@ -35,13 +35,13 @@ const reducer = (state = initialState, action) => {
                 })
             })
 
-        case DELETE_REVIEW:
+        case DELETE_MESSAGE:
             return Object.assign({}, state, {
                 studios: state.studios.map((studio) => {
-                    if (studio.id === action.data.studioId) {
+                    if (studio._id === action.data.studioId) {
                         console.log(action.data.studioId)
                         return Object.assign({}, studio, {
-                            reviews: studio.reviews.filter(review=>review.id !== action.data.reviewId)
+                            messages: studio.messages.filter(message=>message._id !== action.data.messageId)
                         })
                     } else {
                         return studio

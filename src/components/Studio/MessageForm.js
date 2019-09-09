@@ -1,13 +1,13 @@
 import React from 'react';
 
-const ReviewForm = ({ onSubmit, onCancel, onChange, value }) => {
+const MessageForm = ({ onSubmit, onCancel, onChange, value }) => {
     return <form className="create-reivew-form" onSubmit={onSubmit}  >
 
-        <h3 className="text-center">New Review</h3>
+        <h3 className="text-center">New Message</h3>
 
         <div className="input-group">
             <label htmlFor="content"></label>
-            <textarea className="form-content" name="content" id="content" type="content" placeholder="Please write your review here..." onChange={onChange} value={value}></textarea>
+            <textarea className="form-content" name="content" id="content" type="content" placeholder="Please write your message here..." onChange={onChange} value={value}></textarea>
         </div>
 
         <div className="form-footer">
@@ -18,4 +18,4 @@ const ReviewForm = ({ onSubmit, onCancel, onChange, value }) => {
     </form>
 }
 
-export default ReviewForm
+export default MessageForm

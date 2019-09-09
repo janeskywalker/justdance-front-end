@@ -1,19 +1,19 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import { createReview, deleteReview } from '../../actions/reviewActions'
-import ReviewForm from './ReviewForm';
+import { createMessage, deleteMessage } from '../../actions/messageActions'
+import MessageForm from './MessageForm';
 
 
 
 class StudioDetail extends Component {
 
     state = {
-        newReview: "",
+        newMessage: "",
         showForm: false,
     }
 
     handleChange = (evt) => {
-        this.setState({ newReview: evt.target.value })
+        this.setState({ newMessage: evt.target.value })
         console.log(this.state)
     }
 
@@ -25,11 +25,11 @@ class StudioDetail extends Component {
     
         const studios = this.props.studios
         const studioId = parseInt(this.props.match.params.id)
-        const currentStudio = studios.filter(studio=> studio.id === studioId)[0]
+        const currentStudio = studios.filter(studio=> studio._id === studioId)[0]
         const { name, image, address: {street, city, zip} } = currentStudio
 
         console.log('current: ', currentStudio)
-        console.log('reviews: ', currentStudio.reviews)
+        console.log('messages: ', currentStudio.messages)
 
       return (
         <div className="studio-detail" >
@@ -43,30 +43,30 @@ class StudioDetail extends Component {
         </section>
 
 
-        <section className="review-display">
+        <section className="message-display">
 
             {this.props.currentUser !== null ? 
 
             this.state.showForm && this.props.currentUser !== null?
-                <ReviewForm
+                <MessageForm
                     onSubmit={(evt)=>{
                         evt.preventDefault()
-                        const newReview = {
-                            userId: this.props.currentUser.id,
+                        const newMessage = {
+                            userId: this.props.currentUser._id,
                             studioId: studioId,
-                            review: this.state.newReview.trim(),
+                            message: this.state.newMessage.trim(),
                         }
-                        this.props.createReview(newReview)
-                        this.setState({ newReview: '' })
+                        this.props.createMessage(newMessage)
+                        this.setState({ newMessage: '' })
                     }}
                     onCancel={() => {
                         this.setState({
-                            newReview: '',
+                            newMessage: '',
                             showForm: false
                         })
                     }}
                     onChange={this.handleChange}
-                    value={this.state.newReview}
+                    value={this.state.newMessage}
                 />
             : <button onClick={() => {
                 if (this.state.showForm) {
@@ -74,18 +74,18 @@ class StudioDetail extends Component {
                 } else {
                     this.setState({ showForm: true })
                 }
-            }}>Add Review</button>
+            }}>Add Message</button>
             : undefined
         }
 
 
-            <ul className='review-list'>
-                {currentStudio.reviews.map((review)=>{
-                    return <li className='review-list-item'key={review.id}>{review.review}<button onClick={(evt)=>{
+            <ul className='message-list'>
+                {currentStudio.messages.map((message)=>{
+                    return <li className='message-list-item'key={message._id}>{message.message}<button onClick={(evt)=>{
                         console.log('delete')
-                        this.props.deleteReview({
+                        this.props.deleteMessage({
                             studioId: studioId,
-                            reviewId: review.id
+                            messageId: message._id
                         })
                     }}>x</button></li>
                 })}
@@ -106,10 +106,10 @@ function mapStateToProps(state) {
   }
  
   
-// connect takes your action creator (createReview) and makes a new function
+// connect takes your action creator (createMessage) and makes a new function
 // That takes the action object returned from your function and gives it to your
 // store's dispatch method (store.dispatch), which will call reducer
-export default connect(mapStateToProps, { createReview, deleteReview })(StudioDetail);
+export default connect(mapStateToProps, { createMessage, deleteMessage })(StudioDetail);
   
   
 // Redux

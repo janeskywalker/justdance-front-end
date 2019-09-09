@@ -157,18 +157,18 @@
   padding: 5em;
 }
 
-.review-display {
+.message-display {
   background: rgb(7, 0, 0);
   color: whitesmoke;
 }
 
-.review-list {
+.message-list {
   margin: 2em;
 
 }
 
 
-.review-list-item {
+.message-list-item {
   margin: 2em auto;
   width: 65%;
   height: 10vh;

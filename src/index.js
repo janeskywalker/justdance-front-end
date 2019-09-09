@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 import App from './App';
 import configureStore from './configureStore';
 import { BrowserRouter as Router } from 'react-router-dom'
-import { createReview } from './actions/reviewActions';
+// import { createMessage } from './actions/messageActions';
 
 // get store 
 // pass it to provider 
@@ -21,7 +21,7 @@ ReactDOM.render(
 // You can call your store's dispatch method yourself!
 // store.dispatch is what calls the reducer
 // setTimeout(() => {
-//   store.dispatch(createReview({
+//   store.dispatch(createMessage({
 //     userId: 1,
 //     studioId: 6,
 //     review: 'This is another good review',
