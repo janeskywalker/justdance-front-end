@@ -1,4 +1,4 @@
-import {  LOG_IN, LOG_OUT, CREATE_MESSAGE, DELETE_MESSAGE } from "../actions/actionTypes";
+import {  LOG_IN, LOG_OUT, CREATE_MESSAGE, DELETE_MESSAGE, GET_STUDIOS} from "../actions/actionTypes";
 
 const initialState = {
     currentUser: null,
@@ -48,6 +48,12 @@ const reducer = (state = initialState, action) => {
                     }
                 })
             })
+
+
+        case GET_STUDIOS:
+                return Object.assign({}, state, {
+                    studios: action.data.studios
+                })
  
 
             default: 

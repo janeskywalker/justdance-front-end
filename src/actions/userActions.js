@@ -6,6 +6,8 @@ export function login (currentUser) {
   console.log('login action')
   // Send login request to server.
   // If response successful, set current user
+
+  
   return (dispatch) => {
     fetch(LOGIN_URL, {
       method: 'POST',
