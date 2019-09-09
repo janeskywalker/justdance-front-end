@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux'
 import Studio from './Studio'
+import { getStudios } from '../../actions/studioActions'
 
 const StudioContainer = ({ studios }) => {
   console.log(studios)
@@ -8,11 +9,11 @@ const StudioContainer = ({ studios }) => {
   const showStudios = studios.map(studio=> {
     return <Studio studio={studio} key={studio._id}/>
   })
+
+  // action to fetch all studios from server in component did mount
+ 
   
   return (
-  //   showcase
-
-   
     <section className="studio-container">
       <h2>StudioContainer</h2>
       <ul className="studio-wrapper">
@@ -29,5 +30,5 @@ function mapStateToProps(state) {
   return { studios: state.studios }
 }
 
-export default connect(mapStateToProps)(StudioContainer);
+export default connect(mapStateToProps, getStudios)(StudioContainer);
 

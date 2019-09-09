@@ -19,7 +19,6 @@ const Router = () => {
         <Route exact path="/studio/:id" component={StudioDetail} />
         <Route exact path="/loginform" component={LoginForm} />
 
-
       </Switch>
   )
 }
