@@ -1,12 +1,32 @@
 import { CREATE_MESSAGE, DELETE_MESSAGE } from './actionTypes';
 import uuid from 'uuid'
 
+const CREATE_MESSAGE_URL = 'http://localhost:4000/api/v1/messages/'
+
 export function createMessage(newMessage) {
     console.log('create: ', newMessage)
-    return {
-        type: CREATE_MESSAGE,
-        newMessage: Object.assign({}, newMessage, {id: uuid()})
-    }
+    // return {
+    //     type: CREATE_MESSAGE,
+    //     newMessage: Object.assign({}, newMessage, {id: uuid()})
+    //}
+    return (dispatch) => {
+        fetch(CREATE_MESSAGE_URL, {
+          method: 'POST',
+          headers: {
+              'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(newMessage),
+        }).then(async (res) => {
+            const json = await res.json()
+            console.log('res: ', json)
+          dispatch({
+            type: CREATE_MESSAGE,
+            data: {
+              newMessage: await json
+            }
+          })
+        })
+      }
 }
 
 export function deleteMessage(data) {

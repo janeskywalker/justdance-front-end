@@ -17,7 +17,7 @@ const Router = () => {
         <Route exact path="/profile" component={ProfileContainer} />
         <Route exact path="/studios" component={StudioContainer} />
         <Route exact path="/studio/:id" component={StudioDetail} />
-        <Route exact path="/loginform" component={LoginForm} />
+        <Route exact path="/login" component={LoginForm} />
 
       </Switch>
   )

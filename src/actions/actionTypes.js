@@ -14,4 +14,4 @@ export const DELETE_MESSAGE = 'DELETE_MESSAGE';
 
 
 // studio actions
-export const GET_STUDIOS = 'GET_STUDIOS';
+export const UPDATE_STUDIOS = 'UPDATE_STUDIOS';

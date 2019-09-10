@@ -44,7 +44,7 @@ const NavBar = ({currentUser, logout}) => {
                         onClick={()=>{console.log('clicked signup')}}>Signup</button>
                     </li>
 
-                    <li className="nav-list-item"><Link to="/loginform" className="brand-link">Login</Link></li>
+                    <li className="nav-list-item"><Link to="/login" className="brand-link">Login</Link></li>
                     
                 </ul>
             </nav>

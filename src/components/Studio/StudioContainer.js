@@ -9,21 +9,19 @@ import { getStudios } from '../../actions/studioActions'
 
 
   class StudioContainer extends Component {
-    state = {
-      studios: this.props.studios
-    }
-
     componentDidMount() {
-      getStudios()
+      if (this.props.areStudiosLoaded === false) {
+        this.props.getStudios()
+      }
     }
 
     render () {
-      console.log(this.state.studios)
+      console.log('render: ', this.props.studios)
 
-
-    const showStudios = this.state.studios.map(studio=> {
-      return <Studio studio={studio} key={studio._id}/>
-    })
+      const showStudios = Object.keys(this.props.studios).map(studioId=> {
+        const studio = this.props.studios[studioId]
+        return <Studio studio={studio} key={studio._id}/>
+      })
 
       return (
         <section className="studio-container">
@@ -40,10 +38,10 @@ import { getStudios } from '../../actions/studioActions'
 
 function mapStateToProps(state) {
   console.log('state: ', state)
-  return { studios: state.studios }
+  return { studios: state.studios, areStudiosLoaded: state.areStudiosLoaded }
 }
 
-export default connect(mapStateToProps, getStudios)(StudioContainer);
+export default connect(mapStateToProps, { getStudios })(StudioContainer);
 
 
 

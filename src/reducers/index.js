@@ -1,10 +1,11 @@
-import {  LOG_IN, LOG_OUT, CREATE_MESSAGE, DELETE_MESSAGE, GET_STUDIOS} from "../actions/actionTypes";
+import {  LOG_IN, LOG_OUT, CREATE_MESSAGE, DELETE_MESSAGE, UPDATE_STUDIOS} from "../actions/actionTypes";
 
 const initialState = {
     currentUser: null,
     // currentUser: null,
     currentStudio: null,
-    studios: []   
+    areStudiosLoaded: false,
+    studios: {}
 }
 
 const reducer = (state = initialState, action) => {
@@ -25,9 +26,9 @@ const reducer = (state = initialState, action) => {
         case CREATE_MESSAGE:
             return Object.assign({}, state, {
                 studios: state.studios.map((studio) => {
-                    if (studio._id === action.newMessage.studioId) {
+                    if (studio._id === action.data.newMessage.studioId) {
                         return Object.assign({}, studio, {
-                            messages: [ ...studio.messages, action.newMessage ]
+                            messages: [ ...studio.messages, action.data.newMessage ]
                         })
                     } else {
                         return studio
@@ -41,7 +42,7 @@ const reducer = (state = initialState, action) => {
                     if (studio._id === action.data.studioId) {
                         console.log(action.data.studioId)
                         return Object.assign({}, studio, {
-                            messages: studio.messages.filter(message=>message._id !== action.data.messageId)
+                            messages: studio.messages.filter(message => message._id !== action.data.messageId)
                         })
                     } else {
                         return studio
@@ -50,10 +51,22 @@ const reducer = (state = initialState, action) => {
             })
 
 
-        case GET_STUDIOS:
-                return Object.assign({}, state, {
-                    studios: action.data.studios
-                })
+        case UPDATE_STUDIOS:
+            const newStudios = action.data.studios.reduce((acc, studio) => {
+                acc[studio._id] = studio
+                return acc
+            }, {})
+
+            console.log('newStudios: ', newStudios)
+
+            const newState = Object.assign({}, state, {
+                areStudiosLoaded: action.data.areStudiosLoaded || state.areStudiosLoaded,
+                studios: Object.assign({}, state.studios, newStudios)
+            })
+
+            console.log('newState: ', newState)
+
+            return newState
  
 
             default: 
