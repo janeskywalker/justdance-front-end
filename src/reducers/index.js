@@ -1,4 +1,4 @@
-import {  LOG_IN, LOG_OUT, CREATE_MESSAGE, DELETE_MESSAGE, UPDATE_STUDIOS} from "../actions/actionTypes";
+import {  SIGN_UP, LOG_IN, LOG_OUT, CREATE_MESSAGE, DELETE_MESSAGE, UPDATE_STUDIOS} from "../actions/actionTypes";
 
 const initialState = {
     currentUser: null,
@@ -12,6 +12,12 @@ const reducer = (state = initialState, action) => {
     console.log('action: ', action)
     
     switch(action.type) {
+
+        case  SIGN_UP:
+            return Object.assign({}, state, {
+                currentUser: action.data.newUser
+            })
+
 
         case LOG_IN:
             return Object.assign({}, state, {

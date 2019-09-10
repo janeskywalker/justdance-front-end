@@ -20,10 +20,9 @@ const NavBar = ({currentUser, logout}) => {
                 
                     {/* logout button -> set currentUser to null, redirect to Home page*/}
                     <button className="nav-list-item nav-btn" 
-                    style={{cursor: 'pointer'}} 
-                    onClick={()=>{
-                        console.log('clicked logout')
-                        logout()
+                        onClick={()=>{
+                            console.log('clicked logout')
+                            logout()
                         }}>Logout</button>
 
                 </ul>
@@ -38,11 +37,7 @@ const NavBar = ({currentUser, logout}) => {
                 <Link to="/" className="brand-link"><h1 className="brand-header">Just Dance</h1></Link>
 
                 <ul className="nav-list">
-                    <li className="nav-list-item"><button 
-                        className="nav-btn" 
-                        style={{cursor: 'pointer'}} 
-                        onClick={()=>{console.log('clicked signup')}}>Signup</button>
-                    </li>
+                    <li className="nav-list-item"><Link to="/signup" className="brand-link">Signup</Link></li>
 
                     <li className="nav-list-item"><Link to="/login" className="brand-link">Login</Link></li>
                     

@@ -10,8 +10,8 @@ const ProfileContainer = ({currentUser}) => {
   } else {
     return (
       <div className="App">
-        <h2 className='greet-user'>Welcome Dancer {currentUser.name}</h2>
-        { currentUser.avatar !== null && currentUser.avatar !== '' ?
+        <h2 className='greet-user'>Welcome Dancer {currentUser.username}</h2>
+        { currentUser.avatar ?
             <img className="avatar" src={currentUser.avatar} alt="avatar" /> :
             undefined }
           

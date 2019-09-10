@@ -8,6 +8,7 @@
 .App {
   text-align: center;
   background-color: black;
+  min-height: 100vh;
 } 
 
 .App-header {
@@ -45,6 +46,7 @@
   display: block;
   float: right;
   padding: 0 0 0 2em;
+  font-size: 1em;
 }
 
 
@@ -57,7 +59,8 @@
 .nav-btn {
   background-color:rgb(235, 8, 8);
   color: whitesmoke;
-  border: none
+  border: none;
+  cursor: pointer;
 }
 
 .submit-btn {
@@ -108,6 +111,7 @@
 .form-content{
   height: 10vh;
   width: 60%;
+  font-size: 1em;
 }
 
 

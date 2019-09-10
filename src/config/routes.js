@@ -5,6 +5,7 @@ import ProfileContainer from '../components/Profile/ProfileContainer';
 import StudioContainer from '../components/Studio/StudioContainer';
 import StudioDetail from '../components/Studio/StudioDetail';
 import LoginForm from '../components/User/LoginForm';
+import SignupForm from '../components/User/SignupForm';
 
 // destructuring 
 const Router = () => {
@@ -18,6 +19,7 @@ const Router = () => {
         <Route exact path="/studios" component={StudioContainer} />
         <Route exact path="/studio/:id" component={StudioDetail} />
         <Route exact path="/login" component={LoginForm} />
+        <Route exact path="/signup" component={SignupForm} />
 
       </Switch>
   )
