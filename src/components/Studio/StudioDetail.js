@@ -100,7 +100,6 @@ class StudioDetail extends Component {
                                     className='message-list-item'
                                     key={message._id}
                                 >{message.content}<button onClick={(evt)=>{
-                                    console.log('delete')
                                     this.props.deleteMessage({
                                         studioId: currentStudio._id,
                                         messageId: message._id

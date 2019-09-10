@@ -23,30 +23,28 @@ const reducer = (state = initialState, action) => {
                 currentUser: null
             })
 
-        case CREATE_MESSAGE:
-            return Object.assign({}, state, {
-                studios: state.studios.map((studio) => {
-                    if (studio._id === action.data.newMessage.studioId) {
-                        return Object.assign({}, studio, {
-                            messages: [ ...studio.messages, action.data.newMessage ]
-                        })
-                    } else {
-                        return studio
-                    }
-                })
+        case CREATE_MESSAGE: {
+            const studioToUpdate = state.studios[action.data.newMessage.studioId]
+            const updatedStudio = Object.assign({}, studioToUpdate, {
+                messages: [ action.data.newMessage, ...studioToUpdate.messages ]
             })
 
-        case DELETE_MESSAGE:
             return Object.assign({}, state, {
-                studios: state.studios.map((studio) => {
-                    if (studio._id === action.data.studioId) {
-                        console.log(action.data.studioId)
-                        return Object.assign({}, studio, {
-                            messages: studio.messages.filter(message => message._id !== action.data.messageId)
-                        })
-                    } else {
-                        return studio
-                    }
+                studios: Object.assign({}, state.studios, {
+                    [action.data.newMessage.studioId]: updatedStudio
+                })
+            })
+        }
+
+        case DELETE_MESSAGE:
+            const studioToUpdate = state.studios[action.data.studioId]
+            const updatedStudio = Object.assign({}, studioToUpdate, {
+                messages: studioToUpdate.messages.filter(message => message._id !== action.data.messageId)
+            })
+
+            return Object.assign({}, state, {
+                studios: Object.assign({}, state.studios, {
+                    [action.data.studioId]: updatedStudio
                 })
             })
 

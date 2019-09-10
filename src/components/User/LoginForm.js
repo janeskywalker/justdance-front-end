@@ -1,6 +1,7 @@
 
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
+import { Redirect } from 'react-router-dom'
 import { login } from '../../actions/userActions'
 
 
@@ -33,6 +34,12 @@ class LoginForm extends Component {
 
   render() {
 
+    // redirect to profile upon login 
+    if (this.props.currentUser) {
+        return (
+            <Redirect to="/profile" />
+        )
+    } else {
         return (
 
             <section className='login-form-page'>
@@ -58,6 +65,7 @@ class LoginForm extends Component {
             </section>
 
       )
+    }
   }
  
 }
