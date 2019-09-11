@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { getStudio, getStudioMessages } from '../../actions/studioActions'
 import { createMessage, deleteMessage } from '../../actions/messageActions'
 import MessageForm from './MessageForm';
+import Message from './Message'
 
 class StudioDetail extends Component {
 
@@ -95,19 +96,21 @@ class StudioDetail extends Component {
             
                         {/* displaying messages */}
                         {currentStudio.messages? 
+                        
                         <ul className='message-list'>
                                 {currentStudio.messages.map((message)=>{
                                     return (
-                                        <li
-                                            className='message-list-item'
-                                            key={message._id}
-                                        >{message.content}<button onClick={(evt)=>{
-                                            this.props.deleteMessage({
-                                                studioId: currentStudio._id,
-                                                messageId: message._id
-                                            })
-                                        }}>x</button>
-                                        </li>
+                                        <Message message={message} currentStudio={currentStudio}/>
+                                        // <li
+                                        //     className='message-list-item'
+                                        //     key={message._id}
+                                        // >{message.content}<button onClick={(evt)=>{
+                                        //     this.props.deleteMessage({
+                                        //         studioId: currentStudio._id,
+                                        //         messageId: message._id
+                                        //     })
+                                        // }}>x</button>
+                                        // </li>
                                     )
                                 })}
                         </ul>
