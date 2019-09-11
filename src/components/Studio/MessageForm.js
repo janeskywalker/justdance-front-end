@@ -1,7 +1,7 @@
 import React from 'react';
 
 const MessageForm = ({ onSubmit, onCancel, onChange, value }) => {
-    return <form className="create-reivew-form" onSubmit={onSubmit}  >
+    return <form className="create-message-form" onSubmit={onSubmit}  >
 
         <h3 className="text-center">New Message</h3>
 

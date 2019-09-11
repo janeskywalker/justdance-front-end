@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { deleteMessage, updateMessage } from '../../actions/messageActions'
 import MessageForm from './MessageForm'
+import moment from 'moment'
 
 
 
@@ -64,17 +65,26 @@ class Message extends Component {
                     className='message-list-item'
                     key={message._id}
                 >
-                    <p>{message.content}</p>
-                    <button onClick={(evt)=>{
-                        this.props.deleteMessage({
-                        studioId: currentStudio._id,
-                        messageId: message._id
-                    })
-                    }}>Delete</button>
-                    <button onClick={(evt)=>{
-                        this.setState({ isUpdating: true })
-                        // console.log('updating')
-                    }}>Update</button>
+                    <p className='message-user-name'>{message.User.username} says:</p>
+                    <div className="message-content-container">
+                        <p className="message-content">{message.content}</p>
+                        <p className="message-date">{moment(message.create_date).fromNow()}</p>
+                        {this.props.currentUser && this.props.currentUser._id === message.User._id ?
+                            <div className="button-container">
+                                <button onClick={(evt)=>{
+                                    this.props.deleteMessage({
+                                    studioId: currentStudio._id,
+                                    messageId: message._id
+                                })
+                                }}>Delete</button>
+                                <button onClick={(evt)=>{
+                                    this.setState({ isUpdating: true })
+                                    // console.log('updating')
+                                }}>Update</button>
+                            </div>
+                            : undefined
+                        }
+                    </div>
                 </li>
             )
         }
@@ -88,7 +98,7 @@ class Message extends Component {
 
 function mapStateToProps(state) {
   console.log('state: ', state)
-  return { studios: state.studios, areStudiosLoaded: state.areStudiosLoaded }
+  return { studios: state.studios, areStudiosLoaded: state.areStudiosLoaded, currentUser: state.currentUser }
 }
 
 export default connect(mapStateToProps, { deleteMessage, updateMessage } )(Message);

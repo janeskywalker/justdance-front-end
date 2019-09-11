@@ -51,7 +51,7 @@ class StudioDetail extends Component {
     
                     {/* display studio info */}
                     <section className="studio-info">
-                        <h2>{name} </h2>
+                        <h2 className="section-header">{name} </h2>
                         <img className="studio-image-detail" src={`/${image}`} alt="studio gallery" />
                         <p>{street}</p>
                         <p>{city}</p>

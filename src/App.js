@@ -14,7 +14,9 @@ function App({ user }) {
 
       <NavBar />
 
-      <Router />
+      <main className="main-content">
+        <Router />
+      </main>
 
       <footer className="page-footer" >&copy;2019  Jane Zeng </footer> 
 
@@ -23,7 +25,6 @@ function App({ user }) {
 }
 
 function mapStateToProps(state) {
-  console.log('state: ', state)
   return { user: state.currentUser }
 }
 

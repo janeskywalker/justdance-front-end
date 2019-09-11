@@ -26,7 +26,7 @@ import { getStudios } from '../../actions/studioActions'
 
       return (
         <section className="studio-container">
-              <h2>StudioContainer</h2>
+              <h2 className="section-header">Studios</h2>
               <ul className="studio-wrapper">
                 { showStudios }
               </ul>
