@@ -11,6 +11,7 @@ export const LOG_OUT = 'LOG_OUT'
 // message actions
 export const CREATE_MESSAGE = 'CREATE_MESSAGE';
 export const DELETE_MESSAGE = 'DELETE_MESSAGE';
+export const UPDATE_MESSAGE = 'UPDATE_MESSAGE';
 
 
 // studio actions

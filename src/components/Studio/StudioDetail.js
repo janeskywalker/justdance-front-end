@@ -98,21 +98,11 @@ class StudioDetail extends Component {
                         {currentStudio.messages? 
                         
                         <ul className='message-list'>
-                                {currentStudio.messages.map((message)=>{
-                                    return (
-                                        <Message message={message} currentStudio={currentStudio}/>
-                                        // <li
-                                        //     className='message-list-item'
-                                        //     key={message._id}
-                                        // >{message.content}<button onClick={(evt)=>{
-                                        //     this.props.deleteMessage({
-                                        //         studioId: currentStudio._id,
-                                        //         messageId: message._id
-                                        //     })
-                                        // }}>x</button>
-                                        // </li>
-                                    )
-                                })}
+                            {currentStudio.messages.map((message)=>{
+                                return (
+                                    <Message key={message._id} message={message} currentStudio={currentStudio} />
+                                )
+                            })}
                         </ul>
                         : undefined
                         }

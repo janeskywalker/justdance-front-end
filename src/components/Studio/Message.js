@@ -1,32 +1,84 @@
 
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import { deleteMessage } from '../../actions/messageActions'
+import { deleteMessage, updateMessage } from '../../actions/messageActions'
+import MessageForm from './MessageForm'
 
 
 
 class Message extends Component {
     state = {
+        isUpdating: false,
+        content: '',
+    }
 
+    handleChange = (evt) => {
+        console.log('change: ', evt.target.value)
+        this.setState({
+            content: evt.target.value
+        })
+    }
+
+    handleSubmit = (evt) => {
+        evt.preventDefault()
+        this.props.updateMessage(
+            Object.assign({}, this.props.message, {
+                content: this.state.content
+            })
+        )
+
+        this.setState({
+            isUpdating: false,
+            content: '',
+        })
+    }
+
+    handleCancel = (evt) => {
+        this.setState({
+            isUpdating: false,
+            content: '',
+        })
     }
 
     render() {
         const message = this.props.message
         const currentStudio = this.props.currentStudio
-        return (
-            <li
-            className='message-list-item'
-            key={message._id}
-        >{message.content}<button onClick={(evt)=>{
-            this.props.deleteMessage({
-                studioId: currentStudio._id,
-                messageId: message._id
-            })
-        }}>x</button>
-        </li>
-        )
-    }
 
+        if (this.state.isUpdating) {
+            return (
+                <li
+                    className='message-list-item'
+                    key={message._id}
+                >
+                    <MessageForm
+                        value={this.state.content || message.content}
+                        onChange={this.handleChange}
+                        onSubmit={this.handleSubmit}
+                        onCancel={this.handleCancel}
+                    />
+                </li>
+            )
+        } else {
+            return (
+                <li
+                    className='message-list-item'
+                    key={message._id}
+                >
+                    <p>{message.content}</p>
+                    <button onClick={(evt)=>{
+                        this.props.deleteMessage({
+                        studioId: currentStudio._id,
+                        messageId: message._id
+                    })
+                    }}>Delete</button>
+                    <button onClick={(evt)=>{
+                        this.setState({ isUpdating: true })
+                        // console.log('updating')
+                    }}>Update</button>
+                </li>
+            )
+        }
+    }
 }
 
 
@@ -39,7 +91,7 @@ function mapStateToProps(state) {
   return { studios: state.studios, areStudiosLoaded: state.areStudiosLoaded }
 }
 
-export default connect(mapStateToProps, { deleteMessage } )(Message);
+export default connect(mapStateToProps, { deleteMessage, updateMessage } )(Message);
 
 
 
@@ -54,7 +106,7 @@ export default connect(mapStateToProps, { deleteMessage } )(Message);
 3. Have a button for 'update' (should only show if currentUser === message.User)
 4. When 'update' clicked set isUpdating to true
 5. If isUpdating === true render a form inside of li else render content in a <p>
-
+6. on submit of the form, action -> reducer 
 
 
 

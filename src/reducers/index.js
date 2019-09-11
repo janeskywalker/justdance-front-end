@@ -1,8 +1,7 @@
-import {  SIGN_UP, LOG_IN, LOG_OUT, CREATE_MESSAGE, DELETE_MESSAGE, UPDATE_STUDIOS, UPDATE_STUDIO_MESSAGES} from "../actions/actionTypes";
+import {  SIGN_UP, LOG_IN, LOG_OUT, CREATE_MESSAGE, DELETE_MESSAGE, UPDATE_STUDIOS, UPDATE_STUDIO_MESSAGES, UPDATE_MESSAGE} from "../actions/actionTypes";
 
 const initialState = {
     currentUser: null,
-    // currentUser: null,
     currentStudio: null,
     areStudiosLoaded: false,
     studios: {}
@@ -61,6 +60,33 @@ const reducer = (state = initialState, action) => {
                     [action.data.studioId]: updatedStudio
                 })
             })
+        }
+
+        case UPDATE_MESSAGE: {
+            const studioToUpdate = state.studios[action.data.updatedMessage.Studio]
+
+            if (studioToUpdate) {
+                const updatedStudio = Object.assign({}, studioToUpdate, {
+                    messages: studioToUpdate.messages.map((message) => {
+                        if (message._id === action.data.updatedMessage._id) {
+                            return Object.assign({}, message, {
+                                content: action.data.updatedMessage.content
+                            })
+                        } else {
+                            return message
+                        }
+                    })
+                })
+    
+                return Object.assign({}, state, {
+                    studios: Object.assign({}, state.studios, {
+                        [action.data.updatedMessage.Studio]: updatedStudio
+                    })
+                })
+            } else {
+                console.log('Studio not found')
+                return state
+            }
         }
 
 
