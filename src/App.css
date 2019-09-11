@@ -1,33 +1,296 @@
-.App {
-  text-align: center;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+  color: whitesmoke;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
-}
+.App {
+  background-color: black;
+} 
 
 .App-header {
-  background-color: #282c34;
+  background-color: rgba(0,0,0,0.3);
+  background-image: url("/assets/splash1.jpg");
+  background-blend-mode: multiply;
+  background-size: cover;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+  text-shadow: 0 0 1em rgb(0,0,0);
 }
 
-.App-link {
-  color: #61dafb;
+.main-content {
+  min-height: 100vh;
+  width: 65%;
+  margin: 0 auto;
+  text-align: center;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+input,
+textarea {
+  color: #000;
+}
+
+button {
+  background-color: rgba(235, 8, 8);
+  padding: 0.5em;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-right: 5px;
+}
+
+/* ----------------------navbar----------------- */
+
+.nav-bar {
+  background-color: rgb(235, 8, 8);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 1em 2em;
+  align-items: center;
+}
+
+.nav-list {
+  list-style: none;
+  display: block;
+  display: inline-block;
+}
+
+.nav-list-item {
+  display: block;
+  float: right;
+  padding: 0 0 0 2em;
+  font-size: 1em;
+}
+
+
+.nav-list-item .nav-link, .brand-link{
+  text-decoration: none;
+}
+
+
+.nav-btn {
+  background-color:rgb(235, 8, 8);
+  border: none;
+  cursor: pointer;
+}
+
+.submit-btn {
+  background-color: black;
+  border: none;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+.section-header {
+  padding: 1em 0;
+}
+
+.create-message-form {
+  padding: 1em 0;
+}
+
+
+/* ----------------------Profile page----------------- */
+
+.avatar {
+  height: 70vh;
+}
+
+
+/* ------------------------forms------------------------ */
+
+
+.login-form-page {
+  background-color: black;
+  height:100vh;
+}
+
+
+.form-greeting {
+  padding: 2em;
+}
+
+.form-input {
+  margin: 2em;
+}
+
+
+
+.form-content{
+  width: 70%;
+  font-size: 1em;
+  padding: 1em;
+  border-radius: 5px;
+  border: none;
+}
+
+
+
+
+
+/* ----------------------studioContainer----------------- */
+
+
+.studio-wrapper {
+  background-color: black;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 3em;
+  padding: 2em 0;
+}
+
+
+.studio {
+  list-style: none;
+}
+
+
+.studio .studio-link {
+  text-decoration: none;
+}
+
+.studio-image {
+  height: 250px;
+}
+
+
+
+
+
+
+/* ----------------------studioDetail----------------- */
+.studio-image-detail {
+  width: 400px;
+}
+
+
+.studio-info {
+  background-color: black;
+}
+
+.message-display {
+  background: rgb(7, 0, 0);
+  padding: 1em 0;
+}
+
+
+.message-list-item {
+  position: relative;
+  margin: 2em 0;
+  list-style: none;
+  padding: 0 0 0 120px;
+}
+
+.message-user-name {
+  position: absolute;
+  width: 120px;
+  top: 0;
+  left: 0;
+  padding: 0 5px 0 0;
+}
+
+.message-content-container {
+  /* border: whitesmoke solid 1px; */
+  border-radius: 5px;
+  background: #444;
+  padding: 0.5em;
+}
+
+.button-container {
+  padding: 10px 0 0 0;
+  text-align: right;
+}
+
+.message-date {
+  padding: 5px 0 0 0;
+  font-size: 0.8em;
+  color: rgba(245,245,245,0.8)
+}
+
+/* ----------------------footer----------------- */
+
+
+.page-footer {
+  text-align: center;
+  padding: 1em;
+  background-color:rgb(235, 8, 8);
+}
+
+@media screen and (max-width: 1200px) {
+  .main-content {
+    width: 90%;
   }
-  to {
-    transform: rotate(360deg);
+
+  .form-content{
+    width: 85%;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .main-content {
+    width: 100%;
+    padding: 0 5px;
+  }
+
+  .nav-bar {
+    grid-template-columns: 1fr 2fr;
+    padding: 10px;
+  }
+
+  .nav-list-item {
+    padding: 0 0 0 5px;
+  }
+
+  /* ----------------------studioContainer----------------- */
+
+
+  .studio-wrapper {
+    display: block;
+    padding: 1em 0;
+  }
+
+  .studio {
+    position: relative;
+    list-style: none;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    align-items: center;
+    justify-content: center;
+    margin: 0 0 10px 0;
+  }
+
+  .studio .studio-link {
+    text-decoration: none;
+  }
+
+  .studio-image {
+    height: 100px;
+  }
+
+  /* ----------------------studioDetail----------------- */
+
+  .studio-image-detail {
+    width: 300px;
+  }
+
+  .studio-info {
+    padding: 10px;
+  }
+
+  .form-content{
+    width: 95%;
+    font-size: 1em;
+    padding: 0.5em;
   }
 }

@@ -1,12 +1,33 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+import { Provider } from 'react-redux';
 import App from './App';
-import * as serviceWorker from './serviceWorker';
+import configureStore from './configureStore';
+import { BrowserRouter as Router } from 'react-router-dom'
+// import { createMessage } from './actions/messageActions';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+// get store 
+// pass it to provider 
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+const store = configureStore();
+
+ReactDOM.render(
+  <Provider store={store}>
+    <Router>
+      <App />
+    </Router>
+  </Provider>, document.getElementById('root'))
+
+// You can call your store's dispatch method yourself!
+// store.dispatch is what calls the reducer
+// setTimeout(() => {
+//   store.dispatch(createMessage({
+//     userId: 1,
+//     studioId: 6,
+//     review: 'This is another good review',
+//   }))
+// }, 1000)
+
+// fetch('http://localhost:4000/api/v1/studios').then((res) => {
+//   store.dispatch(res.body())
+// })
