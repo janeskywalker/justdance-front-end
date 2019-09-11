@@ -11,6 +11,7 @@ import { getStudios } from '../../actions/studioActions'
   class StudioContainer extends Component {
     componentDidMount() {
       if (this.props.areStudiosLoaded === false) {
+        console.log('loading studios from server')
         this.props.getStudios()
       }
     }

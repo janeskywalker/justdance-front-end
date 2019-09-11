@@ -15,3 +15,4 @@ export const DELETE_MESSAGE = 'DELETE_MESSAGE';
 
 // studio actions
 export const UPDATE_STUDIOS = 'UPDATE_STUDIOS';
+export const UPDATE_STUDIO_MESSAGES = 'UPDATE_STUDIO_MESSAGES';

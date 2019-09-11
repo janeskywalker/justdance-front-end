@@ -1,4 +1,4 @@
-import {  SIGN_UP, LOG_IN, LOG_OUT, CREATE_MESSAGE, DELETE_MESSAGE, UPDATE_STUDIOS} from "../actions/actionTypes";
+import {  SIGN_UP, LOG_IN, LOG_OUT, CREATE_MESSAGE, DELETE_MESSAGE, UPDATE_STUDIOS, UPDATE_STUDIO_MESSAGES} from "../actions/actionTypes";
 
 const initialState = {
     currentUser: null,
@@ -9,6 +9,7 @@ const initialState = {
 }
 
 const reducer = (state = initialState, action) => {
+    console.log('state: ', state)
     console.log('action: ', action)
     
     switch(action.type) {
@@ -30,19 +31,26 @@ const reducer = (state = initialState, action) => {
             })
 
         case CREATE_MESSAGE: {
-            const studioToUpdate = state.studios[action.data.newMessage.studioId]
+            const studioToUpdate = state.studios[action.data.newMessage.Studio]
+            console.log(studioToUpdate)
+
             const updatedStudio = Object.assign({}, studioToUpdate, {
-                messages: [ action.data.newMessage, ...studioToUpdate.messages ]
+                messages: [
+                    action.data.newMessage, 
+                    ...(studioToUpdate.messages || []),
+                ]
             })
 
+            console.log('updatedStudio: ', updatedStudio)
+            
             return Object.assign({}, state, {
                 studios: Object.assign({}, state.studios, {
-                    [action.data.newMessage.studioId]: updatedStudio
+                    [action.data.newMessage.Studio]: updatedStudio
                 })
             })
         }
 
-        case DELETE_MESSAGE:
+        case DELETE_MESSAGE: {
             const studioToUpdate = state.studios[action.data.studioId]
             const updatedStudio = Object.assign({}, studioToUpdate, {
                 messages: studioToUpdate.messages.filter(message => message._id !== action.data.messageId)
@@ -53,6 +61,7 @@ const reducer = (state = initialState, action) => {
                     [action.data.studioId]: updatedStudio
                 })
             })
+        }
 
 
         case UPDATE_STUDIOS:
@@ -71,10 +80,23 @@ const reducer = (state = initialState, action) => {
             console.log('newState: ', newState)
 
             return newState
+
+        case UPDATE_STUDIO_MESSAGES: {
+            const studioToUpdate = state.studios[action.data.studioId]
+            const updatedStudio = Object.assign({}, studioToUpdate, {
+                messages: action.data.messages
+            })
+
+            return Object.assign({}, state, {
+                studios: Object.assign({}, state.studios, {
+                    [action.data.studioId]: updatedStudio
+                })
+            })
+        }
  
 
-            default: 
-                return state
+        default: 
+            return state
     }
 
 

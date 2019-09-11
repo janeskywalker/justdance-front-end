@@ -6,10 +6,6 @@ const DELETE_MESSAGE_URL = 'http://localhost:4000/api/v1/messages/'
 
 export function createMessage(newMessage) {
     console.log('create: ', newMessage)
-    // return {
-    //     type: CREATE_MESSAGE,
-    //     newMessage: Object.assign({}, newMessage, {id: uuid()})
-    //}
     return (dispatch) => {
         fetch(CREATE_MESSAGE_URL, {
           method: 'POST',
@@ -18,12 +14,13 @@ export function createMessage(newMessage) {
           },
           body: JSON.stringify(newMessage),
         }).then(async (res) => {
-            const json = await res.json()
-            console.log('res: ', json)
+            // const json = await res.json()
+            // console.log('res: ', json)
           dispatch({
             type: CREATE_MESSAGE,
             data: {
-              newMessage: await json
+            // this newMessage is sent back from the server
+              newMessage: await res.json()
             }
           })
         })
@@ -32,11 +29,6 @@ export function createMessage(newMessage) {
 
 export function deleteMessage(data) {
     console.log('deleteing -- action ')
-    // return {
-    //     type: DELETE_MESSAGE,
-    //     data: data
-    // }
-
     return (dispatch) => {
       fetch(`${DELETE_MESSAGE_URL}${data.messageId}`, {
         method: 'DELETE',
