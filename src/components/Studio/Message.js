@@ -92,21 +92,12 @@ class Message extends Component {
 }
 
 
-
-
-
-
 function mapStateToProps(state) {
   console.log('state: ', state)
   return { studios: state.studios, areStudiosLoaded: state.areStudiosLoaded, currentUser: state.currentUser }
 }
 
 export default connect(mapStateToProps, { deleteMessage, updateMessage } )(Message);
-
-
-
-
-
 
 
 /**
@@ -119,33 +110,5 @@ export default connect(mapStateToProps, { deleteMessage, updateMessage } )(Messa
 6. on submit of the form, action -> reducer 
 
 
-
-
-if (isUpdating) {
-    return (
-        form
-    )
-} else {
-    return (
-        <li
-            className='message-list-item'
-            key={message._id}
-        >
-            <p>{message.content}</p>
-            
-            { this.props.currentUser && this.props.currentUser._id === message.User ?
-                <div class="action-container">
-                    <button onClick={(evt)=>{
-                        this.props.deleteMessage({
-                            studioId: currentStudio._id,
-                            messageId: message._id
-                        })
-                    }}>x</button>
-                    // update button...
-                </div>
-            : undefined }
-        </li>
-    )
-}
 
 */
