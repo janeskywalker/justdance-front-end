@@ -48,23 +48,3 @@ export default connect(mapStateToProps, { getStudios })(StudioContainer);
 
 
 
-// const StudioContainer = ({ studios }) => {
-//   console.log(studios)
-
-//   const showStudios = studios.map(studio=> {
-//     return <Studio studio={studio} key={studio._id}/>
-//   })
-
- 
-  
-//   return (
-//     <section className="studio-container">
-//       <h2>StudioContainer</h2>
-//       <ul className="studio-wrapper">
-//         { showStudios }
-//       </ul>
-//     </section>
-//   )
-// }
-
-
