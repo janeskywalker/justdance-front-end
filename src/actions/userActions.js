@@ -1,8 +1,9 @@
 import { SIGN_UP, LOG_IN, LOG_OUT } from './actionTypes';
+import config from '../config'
 
-const LOGIN_URL = 'http://localhost:4000/api/v1/auth/login'
-const LOGOUT_URL = 'http://localhost:4000/api/v1/auth/logout'
-const SIGN_UP_URL = 'http://localhost:4000/api/v1/auth/register'
+const LOGIN_URL = `http://${config.hostName}/api/v1/auth/login`
+const LOGOUT_URL = `http://${config.hostName}/api/v1/auth/logout`
+const SIGN_UP_URL = `http://${config.hostName}/api/v1/auth/register`
 
 
 export function signup (newUser) {
@@ -56,7 +57,7 @@ export function login (currentUser) {
 export function logout () {
   console.log('logout in action')
   return (dispatch) => {
-    fetch(LOGIN_URL, {
+    fetch(LOGOUT_URL, {
       method: 'POST',
     }).then(async (res) => {
       dispatch({

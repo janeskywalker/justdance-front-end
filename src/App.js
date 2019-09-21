@@ -2,8 +2,7 @@ import React from 'react';
 import './App.css';
 import { connect } from 'react-redux'
 import NavBar from './components/NavBar';
-import { Switch, Route, withRouter } from 'react-router-dom'
-import Router from './config/routes';
+import Router from './routes';
 
 
 

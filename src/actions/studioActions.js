@@ -1,9 +1,9 @@
 import { UPDATE_STUDIOS, UPDATE_STUDIO_MESSAGES } from './actionTypes';
+import config from '../config'
 
-
-const GET_STUDIOS_URL = 'http://localhost:4000/api/v1/studios'
-const GET_STUDIO_URL = 'http://localhost:4000/api/v1/studios/'
-const GET_STUDIO_MESSAGES_URL = 'http://localhost:4000/api/v1/messages/studio/'
+const GET_STUDIOS_URL = `http://${config.hostName}/api/v1/studios`
+const GET_STUDIO_URL = `http://${config.hostName}/api/v1/studios/`
+const GET_STUDIO_MESSAGES_URL = `http://${config.hostName}/api/v1/messages/studio/`
 
 export function getStudios() {
     console.log('getting studios')
