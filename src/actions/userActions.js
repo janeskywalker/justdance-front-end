@@ -1,9 +1,9 @@
 import { SIGN_UP, LOG_IN, LOG_OUT } from './actionTypes';
 import config from '../config'
 
-const LOGIN_URL = `http://${config.hostName}/api/v1/auth/login`
-const LOGOUT_URL = `http://${config.hostName}/api/v1/auth/logout`
-const SIGN_UP_URL = `http://${config.hostName}/api/v1/auth/register`
+const LOGIN_URL = `${config.hostName}/api/v1/auth/login`
+const LOGOUT_URL = `${config.hostName}/api/v1/auth/logout`
+const SIGN_UP_URL = `${config.hostName}/api/v1/auth/register`
 
 
 export function signup (newUser) {

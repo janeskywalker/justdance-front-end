@@ -1,9 +1,9 @@
 import { CREATE_MESSAGE, DELETE_MESSAGE, UPDATE_MESSAGE } from './actionTypes';
 import config from '../config'
 
-const CREATE_MESSAGE_URL = `http://${config.hostName}/api/v1/messages/`
-const DELETE_MESSAGE_URL = `http://${config.hostName}/api/v1/messages/`
-const UPDATE_MESSAGE_URL = `http://${config.hostName}/api/v1/messages/`
+const CREATE_MESSAGE_URL = `${config.hostName}/api/v1/messages/`
+const DELETE_MESSAGE_URL = `${config.hostName}/api/v1/messages/`
+const UPDATE_MESSAGE_URL = `${config.hostName}/api/v1/messages/`
 
 export function createMessage(newMessage) {
     console.log('create: ', newMessage)
