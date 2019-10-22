@@ -38,8 +38,8 @@ const NavBar = ({currentUser, logout}) => {
 
                 <ul className="nav-list">
                     <li className="nav-list-item"><Link to="/signup" className="brand-link">Signup</Link></li>
-
                     <li className="nav-list-item"><Link to="/login" className="brand-link">Login</Link></li>
+                    <li className="nav-list-item"><Link to="/studios" className="nav-link" >Studios</Link></li>
                     
                 </ul>
             </nav>
