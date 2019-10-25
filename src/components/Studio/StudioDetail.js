@@ -7,6 +7,10 @@ import Message from './Message'
 
 class StudioDetail extends Component {
 
+    // property, in the object, not prototype, methods are in the prototype
+    // for cancellin the setTimeOut 
+    timerId = null
+
     state = {
         newMessage: "",
         showForm: false,
@@ -25,15 +29,45 @@ class StudioDetail extends Component {
         return currentStudio
     }
 
-    componentDidMount() {
+    // private method 
+    // continuation 
+    _scheduleTimeout() {
+        this.timeId = setTimeout(async () => {
+            console.log('repeating')
+            //  also takes the last time stamp 
+            // compare and only grab the new messages from database
+            const res = await this.props.getStudioMessages(this.props.match.params.id)
+            console.log('newMessages: ', res)
+            this._scheduleTimeout()
+        }, 3000)
+    }
+
+    async componentDidMount() {
         const currentStudio = this.getCurrentStudio()
         if (!currentStudio) {
             // grab the id from match
             this.props.getStudio(this.props.match.params.id)
         } else if (!currentStudio.messages) {
-            this.props.getStudioMessages(this.props.match.params.id)
+            console.log("this props:", this.props)
+            await this.props.getStudioMessages(this.props.match.params.id)
+            console.log("this props:", this.props)
+
+            // repeating to get messages
+            this._scheduleTimeout();
         }
     }
+
+    // componentDidUpdate() {
+    //     // repeating to get messages
+    //     console.log("this props:", this.props)
+    //     setTimeout(function repeatGetMessages(){
+    //         console.log('repeating')
+    //         console.log("this props:", this.props)
+
+    //         this.props.getStudioMessages(this.props.match.params.id)
+    //         setTimeout(repeatGetMessages, 3000)
+    //     }, 3000)
+    // }
 
     render() {
         console.log('props: ', this.props)
