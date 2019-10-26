@@ -1,4 +1,4 @@
-import {  SIGN_UP, LOG_IN, LOG_OUT, CREATE_MESSAGE, DELETE_MESSAGE, UPDATE_STUDIOS, UPDATE_STUDIO_MESSAGES, UPDATE_MESSAGE} from "../actions/actionTypes";
+import {  SIGN_UP, LOG_IN, LOG_OUT, CREATE_MESSAGE, DELETE_MESSAGE, UPDATE_STUDIOS, UPDATE_STUDIO_MESSAGES, UPDATE_MESSAGE, UPDATE_NEW_MESSAGES} from "../actions/actionTypes";
 
 const initialState = {
     currentUser: null,
@@ -111,6 +111,31 @@ const reducer = (state = initialState, action) => {
             const studioToUpdate = state.studios[action.data.studioId]
             const updatedStudio = Object.assign({}, studioToUpdate, {
                 messages: action.data.messages
+            })
+
+            return Object.assign({}, state, {
+                studios: Object.assign({}, state.studios, {
+                    [action.data.studioId]: updatedStudio
+                })
+            })
+        }
+
+        // add the new messages to the message array
+        case UPDATE_NEW_MESSAGES: {
+            const studioToUpdate = state.studios[action.data.studioId]
+
+            /*
+            check if the new message has already been added,
+            write a function to loop through the updated messages, if id === new message Id, return false (not unique) -> has not been added -> add the new meddage to updated message 
+            **/
+
+
+
+            const updatedStudio = Object.assign({}, studioToUpdate, {
+                messages: [
+                    ...action.data.messages, 
+                    ...(studioToUpdate.messages || []),
+                ]
             })
 
             return Object.assign({}, state, {

@@ -33,14 +33,12 @@ const NavBar = ({currentUser, logout}) => {
         return (
             <nav className='nav-bar'>
 
-
                 <Link to="/" className="brand-link"><h1 className="brand-header">Just Dance</h1></Link>
 
                 <ul className="nav-list">
                     <li className="nav-list-item"><Link to="/signup" className="brand-link">Signup</Link></li>
                     <li className="nav-list-item"><Link to="/login" className="brand-link">Login</Link></li>
                     <li className="nav-list-item"><Link to="/studios" className="nav-link" >Studios</Link></li>
-                    
                 </ul>
             </nav>
         )

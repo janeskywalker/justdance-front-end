@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import { getStudio, getStudioMessages } from '../../actions/studioActions'
+import { getStudio, getStudioMessages, getNewMessages } from '../../actions/studioActions'
 import { createMessage, deleteMessage } from '../../actions/messageActions'
 import MessageForm from './MessageForm';
 import Message from './Message'
@@ -8,8 +8,11 @@ import Message from './Message'
 class StudioDetail extends Component {
 
     // property, in the object, not prototype, methods are in the prototype
-    // for cancellin the setTimeOut 
+    // for cancelling the setTimeOut 
     timerId = null
+
+    // timeStamp property save the created time of the newest message <- from the new message back from api 
+    newMessageTimeStamp = 0
 
     state = {
         newMessage: "",
@@ -32,11 +35,12 @@ class StudioDetail extends Component {
     // private method 
     // continuation 
     _scheduleTimeout() {
+        console.log('start timer');
         this.timeId = setTimeout(async () => {
             console.log('repeating')
             //  also takes the last time stamp 
             // compare and only grab the new messages from database
-            const res = await this.props.getStudioMessages(this.props.match.params.id)
+            const res = await this.props.getNewMessages(this.props.match.params.id, this.newMessageTimeStamp)
             console.log('newMessages: ', res)
             this._scheduleTimeout()
         }, 3000)
@@ -51,23 +55,17 @@ class StudioDetail extends Component {
             console.log("this props:", this.props)
             await this.props.getStudioMessages(this.props.match.params.id)
             console.log("this props:", this.props)
-
-            // repeating to get messages
-            this._scheduleTimeout();
         }
+
+        // repeating to get messages
+        this._scheduleTimeout();
     }
 
-    // componentDidUpdate() {
-    //     // repeating to get messages
-    //     console.log("this props:", this.props)
-    //     setTimeout(function repeatGetMessages(){
-    //         console.log('repeating')
-    //         console.log("this props:", this.props)
-
-    //         this.props.getStudioMessages(this.props.match.params.id)
-    //         setTimeout(repeatGetMessages, 3000)
-    //     }, 3000)
-    // }
+    componentWillUnmount() {
+        if(this.timerId) {
+            clearTimeout(this.timerId)
+        }
+    }
 
     render() {
         console.log('props: ', this.props)
@@ -79,6 +77,12 @@ class StudioDetail extends Component {
 
             console.log('current: ', currentStudio)
             console.log('messages: ', currentStudio.messages)
+
+            // extract create time for newest message
+            // only use teneray opoerator when need to return somthing
+            this.newMessageTimeStamp = currentStudio.messages && currentStudio.messages[0] ? 
+                currentStudio.messages[0].create_date : 
+                this.newMessageTimeStamp
 
             return (
                 <div className="studio-detail" >
@@ -163,7 +167,7 @@ function mapStateToProps(state) {
 // That takes the action object returned from your function and gives it to your
 // store's dispatch method (store.dispatch), which will call reducer
 
-export default connect(mapStateToProps, { createMessage, deleteMessage, getStudio, getStudioMessages })(StudioDetail);
+export default connect(mapStateToProps, { createMessage, deleteMessage, getStudio, getStudioMessages, getNewMessages })(StudioDetail);
   
 // Redux
 // 1. Create a store
