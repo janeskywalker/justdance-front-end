@@ -7,6 +7,15 @@ const initialState = {
     studios: {}
 }
 
+function shouldAddMessage(newMessage, studioMessageArray) {
+    for(let i=0; i<studioMessageArray.length; i++) {
+        if(studioMessageArray[i]._id === newMessage._id) {
+            return false
+        }
+    }
+    return true
+}
+
 const reducer = (state = initialState, action) => {
     console.log('state: ', state)
     console.log('action: ', action)
@@ -96,14 +105,10 @@ const reducer = (state = initialState, action) => {
                 return acc
             }, {})
 
-            console.log('newStudios: ', newStudios)
-
             const newState = Object.assign({}, state, {
                 areStudiosLoaded: action.data.areStudiosLoaded || state.areStudiosLoaded,
                 studios: Object.assign({}, state.studios, newStudios)
             })
-
-            console.log('newState: ', newState)
 
             return newState
 
@@ -122,18 +127,29 @@ const reducer = (state = initialState, action) => {
 
         // add the new messages to the message array
         case UPDATE_NEW_MESSAGES: {
+
             const studioToUpdate = state.studios[action.data.studioId]
 
             /*
             check if the new message has already been added,
-            write a function to loop through the updated messages, if id === new message Id, return false (not unique) -> has not been added -> add the new meddage to updated message 
+            write a function to loop through the updated messages, if id === new message Id, return false (not unique) -> has not been added -> add the new message to updated message 
             **/
 
+            
 
+            const newMessagesToAdd = []
+
+            for (const messageToCheck of action.data.messages) {
+                if(shouldAddMessage(messageToCheck, studioToUpdate.messages)) {
+                    console.log('adding message')
+                    newMessagesToAdd.push(messageToCheck)
+                }
+            }
 
             const updatedStudio = Object.assign({}, studioToUpdate, {
                 messages: [
-                    ...action.data.messages, 
+                    ...newMessagesToAdd,
+                    //...action.data.messages, 
                     ...(studioToUpdate.messages || []),
                 ]
             })

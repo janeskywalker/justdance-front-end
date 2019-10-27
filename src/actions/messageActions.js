@@ -53,8 +53,7 @@ export function updateMessage(newMessage) {
         },
         body: JSON.stringify(newMessage),
       }).then(async (res) => {
-          const json = await res.json()
-          console.log('res: ', json)
+        const json = await res.json()
         dispatch({
           type: UPDATE_MESSAGE,
           data: {
