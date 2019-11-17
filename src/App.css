@@ -15,6 +15,7 @@
   background-image: url("/assets/splash1.jpg");
   background-blend-mode: multiply;
   background-size: cover;
+  background-position: center;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -26,7 +27,7 @@
 
 .main-content {
   min-height: 100vh;
-  width: 65%;
+  /* width: 65%; */
   margin: 0 auto;
   text-align: center;
 }
@@ -52,7 +53,7 @@ button {
   background: linear-gradient(90deg, rgba(122,2,1,1) 0%, rgba(158,2,15,1) 23%, rgba(186,4,17,1) 46%, rgba(218,7,22,1) 64%, rgba(241,8,41,1) 90%);
   display: grid;
   grid-template-columns: 1fr 1fr;
-  padding: 1em 2em;
+  padding: 0em 2em;
   align-items: center;
 }
 
@@ -65,8 +66,15 @@ button {
 .nav-list-item {
   display: block;
   float: right;
-  padding: 0 0 0 2em;
+  margin: 0 0 0 2em;
   font-size: 1em;
+  padding: 20px 0 18px 0;
+  height: 60px;
+  line-height: 20px;
+}
+
+.nav-list-item:hover{
+  border-bottom: 2px solid white;
 }
 
 
@@ -75,12 +83,9 @@ button {
 }
 
 
-.nav-list-item a:hover{
+/* .nav-list-item a:hover{
   border-bottom: 1px solid white;
-}
-
-
-
+} */
 
 
 
@@ -238,9 +243,13 @@ button {
   background: linear-gradient(90deg, rgba(122,2,1,1) 0%, rgba(158,2,15,1) 23%, rgba(186,4,17,1) 46%, rgba(218,7,22,1) 64%, rgba(241,8,41,1) 90%);
 }
 
+
+
+/* ----------------------responsive----------------- */
+
 @media screen and (max-width: 1200px) {
   .main-content {
-    width: 90%;
+    /* width: 90%; */
   }
 
   .form-content{
@@ -256,11 +265,11 @@ button {
 
   .nav-bar {
     grid-template-columns: 1fr 2fr;
-    padding: 10px;
+    padding: 0 10px;
   }
 
   .nav-list-item {
-    padding: 0 0 0 5px;
+    margin: 0 0 0 8px;
   }
 
   /* ----------------------studioContainer----------------- */
