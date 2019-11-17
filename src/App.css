@@ -75,6 +75,15 @@ button {
 }
 
 
+.nav-list-item a:hover{
+  border-bottom: 1px solid white;
+}
+
+
+
+
+
+
 .nav-btn {
   background-color:rgb(235, 8, 8);
   border: none;
