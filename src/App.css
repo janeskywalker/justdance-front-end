@@ -48,7 +48,8 @@ button {
 /* ----------------------navbar----------------- */
 
 .nav-bar {
-  background-color: rgb(235, 8, 8);
+  background: rgb(122,2,1);
+  background: linear-gradient(90deg, rgba(122,2,1,1) 0%, rgba(158,2,15,1) 23%, rgba(186,4,17,1) 46%, rgba(218,7,22,1) 64%, rgba(241,8,41,1) 90%);
   display: grid;
   grid-template-columns: 1fr 1fr;
   padding: 1em 2em;
@@ -224,7 +225,8 @@ button {
 .page-footer {
   text-align: center;
   padding: 1em;
-  background-color:rgb(235, 8, 8);
+  background: rgb(122,2,1);
+  background: linear-gradient(90deg, rgba(122,2,1,1) 0%, rgba(158,2,15,1) 23%, rgba(186,4,17,1) 46%, rgba(218,7,22,1) 64%, rgba(241,8,41,1) 90%);
 }
 
 @media screen and (max-width: 1200px) {
