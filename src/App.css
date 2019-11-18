@@ -46,6 +46,7 @@ button {
   margin-right: 5px;
 }
 
+
 /* ----------------------navbar----------------- */
 
 .nav-bar {
@@ -150,6 +151,11 @@ button {
   border: none;
 }
 
+.label {
+  display: inline-block;
+  width: 160px;
+  text-align: left;
+}
 
 
 

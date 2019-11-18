@@ -53,23 +53,23 @@ class SignupForm extends Component {
                 <form onSubmit={this.handleSubmit} className='login-form'>
 
                     <div className="form-group">
-                        <label htmlFor="username">Username</label>
+                        <label className="label" htmlFor="username">Username</label>
                         <input name="username" id="username" value={this.state.username} onChange={this.handleChange} className="form-input"></input>
                     </div>
 
                     <div className="form-group">
-                    <label htmlFor="email">Email</label>
+                    <label className="label" htmlFor="email">Email</label>
                     <input type="email" id="email" name="email" value={this.state.email} onChange={this.handleChange} className="form-input" />
                     </div>
 
                     <div className="form-group">
-                    <label htmlFor="email">Password</label>
+                    <label className="label" htmlFor="email">Password</label>
                     <input type="password" id="password" name="password" value={this.state.password} onChange={this.handleChange} className="form-input" />
                     </div>
 
 
                     <div className="form-group">
-                    <label htmlFor="email">Confirm password</label>
+                    <label className="label" htmlFor="email">Confirm password</label>
                     <input type="password" id="password2" name="password2" value={this.state.password2} onChange={this.handleChange} className="form-input" />
                     </div>
 

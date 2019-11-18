@@ -12,7 +12,7 @@ const NavBar = ({currentUser, logout}) => {
         return (
             <nav className='nav-bar'>
                 
-                <Link to="/" className="brand-link"><h1 className="brand-header">Just Dance</h1></Link>
+                <Link to="/" className="brand-link"><h1 className="brand-header">justDance</h1></Link>
 
                 <ul className="nav-list">
                     <li className="nav-list-item"><Link to="/profile" className="nav-link" >Profile</Link></li>
@@ -33,7 +33,7 @@ const NavBar = ({currentUser, logout}) => {
         return (
             <nav className='nav-bar'>
 
-                <Link to="/" className="brand-link"><h1 className="brand-header">Just Dance</h1></Link>
+                <Link to="/" className="brand-link"><h1 className="brand-header">justDance</h1></Link>
 
                 <ul className="nav-list">
                     <li className="nav-list-item"><Link to="/signup" className="brand-link">Signup</Link></li>
