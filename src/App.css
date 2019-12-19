@@ -27,7 +27,6 @@
 
 .main-content {
   min-height: 100vh;
-  /* width: 65%; */
   margin: 0 auto;
   text-align: center;
 }
@@ -191,6 +190,11 @@ button {
 
 
 /* ----------------------studioDetail----------------- */
+.studio-detail {
+  width: 65%;
+  margin: 0 auto;
+}
+
 .studio-image-detail {
   width: 400px;
 }
@@ -208,7 +212,7 @@ button {
 
 .message-list-item {
   position: relative;
-  margin: 2em 7em;
+  margin: 2em 0;
   list-style: none;
   padding: 0 0 0 120px;
 }
@@ -254,8 +258,8 @@ button {
 /* ----------------------responsive----------------- */
 
 @media screen and (max-width: 1200px) {
-  .main-content {
-    /* width: 90%; */
+  .studio-detail {
+    width: 90%;
   }
 
   .form-content{
@@ -264,7 +268,7 @@ button {
 }
 
 @media screen and (max-width: 600px) {
-  .main-content {
+  .studio-detail {
     width: 100%;
     padding: 0 5px;
   }
